@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/*jshint node:true, es5:true */
 /**
  * Scan for module dirs (those with a package.json file)
  * Skip symbolic links.
@@ -136,7 +137,7 @@ function start(contextDir, forceDev) {
 
         if (packageJson) {
             REALDEPTYPES.forEach(function(depType) {
-                if (dir in packageJson[depType]) {
+                if (packageJson[depType] && dir in packageJson[depType]) {
                     found = true;
                 }
             });
