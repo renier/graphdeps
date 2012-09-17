@@ -1,11 +1,12 @@
 {
-    "author": "Renier Morales <renierm@us.ibm.com>",
+    "author": "Renier Morales <renier@morales-rodriguez.net>",
     "name": "graphdeps",
     "description": "Generate graph for npm module dependencies",
-    "version": "0.0.1-ibm",
+    "version": "0.1.0",
     "keywords": [ "dependencies", "graph", "npm" ],
     "bin": "./bin/graphdeps.js",
     "dependencies": {
-    	"graphviz": "0.0.x"
+    	"graphviz": "0.0.x",
+        "optimist": "0.3.x"
     }
 }

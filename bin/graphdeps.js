@@ -10,15 +10,19 @@
  * scan for module dirs under node_modules.
  */
 
-var fs = require('fs'),
+var argv = require('optimist').
+        usage('Usage: $0 [options] <directory>').
+        demand(1).
+        describe('deptypes', 'Graph these additional dependency types (e.g. "dev,optional").').
+        describe('excludes', 'Exclude these modules from the traversal (e.g. "npm,grunt").').
+        argv,
+    fs = require('fs'),
     path = require('path'),
     g = require('graphviz').digraph('G'),
     edges = {},
-    //DEPTYPES = ["", "dev"],
-    DEPTYPES = [""],
+    DEPTYPES = argv.deptypes ? [""].concat(argv.deptypes.split(/,/)) : [""],
     REALDEPTYPES = DEPTYPES.map(function(d) { return !d ? "dependencies" : d+"Dependencies"; }),
-    EXCLUDES = ["grunt-ibm-n3"],
-    //EXCLUDES = [],
+    EXCLUDES = argv.excludes ? argv.excludes.split(/,/) : [],
     html = "";
 
 function getPackageJson(modulePath) {
@@ -165,7 +169,7 @@ function start(contextDir, forceDev) {
     });
 }
 
-start(process.argv[2] || process.cwd());
+start(argv._[0]);
 console.log(g.nodeCount() + " unique dependencies found.");
 g.output("png", "deps.png");
 console.log("Created graph deps.png.");
