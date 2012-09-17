@@ -66,7 +66,6 @@ function addHtml(json, isRuntime) {
     }
     html += "<td>" + (json.description || "") + "</td>";
     html += "<td>" + (isRuntime ? "Yes" : "No") + "</td>";
-    html += "<td>&nbsp;</td>";
     html += "</tr>\n";
 }
 
@@ -189,8 +188,6 @@ html =
     '                    <span style="color:#e6e6fa;">Description</span></th>\n' +
     '                <th scope="col" style="background-color: #000080; ">\n' +
     '                    <span style="color:#e6e6fa;">Part of runtime?</span></th>\n' +
-    '                <th scope="col" style="background-color: #000080; ">\n' +
-    '                    <span style="color:#e6e6fa;">Confidence level that we need to ship this with the product? (H, M, L)</span></th>\n' +
     '            </tr>\n' +
     '        </thead>\n' +
     '        <tbody>\n' + 
