@@ -1,3 +1,0 @@
-TODOs:
-* Add command line options to control the dep tree traversal. Currently options are available, but only by editing the actual script top variables.
- 
